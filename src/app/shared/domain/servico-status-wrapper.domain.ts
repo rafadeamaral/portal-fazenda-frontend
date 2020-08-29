@@ -1,4 +1,4 @@
-import {ServicoStatus} from './servico-status.domain';
+import {ServicoStatus} from './servico-status.enum';
 
 export interface ServicoStatusWrapper {
   status: ServicoStatus;
