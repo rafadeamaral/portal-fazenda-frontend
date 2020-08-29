@@ -1,9 +1,26 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuItem} from 'primeng';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.sass']
 })
-export class AppComponent {
-  title = 'portal-fazenda-frontend';
+export class AppComponent implements OnInit {
+
+  items: MenuItem[];
+  activeItem: MenuItem;
+
+  ngOnInit(): void {
+    this.items = [
+      {label: 'Home', icon: 'pi pi-fw pi-home'},
+      {label: 'Calendar', icon: 'pi pi-fw pi-calendar'},
+      {label: 'Edit', icon: 'pi pi-fw pi-pencil'},
+      {label: 'Documentation', icon: 'pi pi-fw pi-file'},
+      {label: 'Settings', icon: 'pi pi-fw pi-cog'}
+    ];
+
+    this.activeItem = this.items[0];
+  }
+
 }
