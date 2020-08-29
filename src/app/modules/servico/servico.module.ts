@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ServicoStatusAtualComponent } from './servico-status-atual/servico-status-atual.component';
 import {ServicoRoutingModule} from './servico-routing.module';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
   declarations: [ServicoStatusAtualComponent],
   imports: [
-    CommonModule,
+    SharedModule,
     ServicoRoutingModule
   ]
 })
