@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TabMenuModule, ToolbarModule} from 'primeng';
+import {TableModule, TabMenuModule, ToolbarModule} from 'primeng';
 
 @NgModule({
   declarations: [],
@@ -12,7 +12,8 @@ import {TabMenuModule, ToolbarModule} from 'primeng';
   exports: [
     CommonModule,
     ToolbarModule,
-    TabMenuModule
+    TabMenuModule,
+    TableModule
   ]
 })
 export class SharedModule { }

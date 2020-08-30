@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ServicoAutorizador} from '../../shared/domain/servico-autorizador.domain';
+import {ServicoWrapper} from '../../shared/domain/servico-wrapper';
 
 @Injectable()
 export class ServicoService {
@@ -11,8 +11,8 @@ export class ServicoService {
 
   constructor(private http: HttpClient) { }
 
-  findAtual(): Observable<ServicoAutorizador[]> {
-    return this.http.get<ServicoAutorizador[]>(this.URL_API);
+  findAtual(): Observable<ServicoWrapper[]> {
+    return this.http.get<ServicoWrapper[]>(this.URL_API);
   }
 
 }
