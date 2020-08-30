@@ -5,9 +5,10 @@ import {AutorizadorService} from './services/autorizador.service';
 import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
 import {FormsModule} from '@angular/forms';
 import {ConverterService} from './services/converter.service';
+import { ServicoStatusPipe } from './pipes/servico-status.pipe';
 
 @NgModule({
-  declarations: [AutorizadorSelectComponent],
+  declarations: [AutorizadorSelectComponent, ServicoStatusPipe],
   imports: [
     CommonModule,
     ToolbarModule,
@@ -24,7 +25,8 @@ import {ConverterService} from './services/converter.service';
     SelectButtonModule,
     FormsModule,
     CalendarModule,
-    AutorizadorSelectComponent
+    AutorizadorSelectComponent,
+    ServicoStatusPipe
   ]
 })
 export class SharedModule {
