@@ -1,6 +1,6 @@
 <div class="card">
   <h5>Status atual dos serviços</h5>
-  <p-table [value]="status" sortField="autorizador.dsAutorizador" sortMode="single" (onSort)="onSort()">
+  <p-table [value]="status" sortField="autorizador.idAutorizador" sortMode="single" (onSort)="onSort()">
     <ng-template pTemplate="header">
       <tr>
         <th>Serviço</th>
@@ -8,7 +8,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
-      <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.autorizador.dsAutorizador].index === rowIndex">
+      <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.autorizador.idAutorizador].index === rowIndex">
         <td colspan="2">
           <span style="font-weight:bold">{{rowData.autorizador.dsAutorizador}}</span>
         </td>

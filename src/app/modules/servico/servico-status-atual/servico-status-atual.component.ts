@@ -16,29 +16,25 @@ export class ServicoStatusAtualComponent implements OnInit {
   ngOnInit(): void {
     this.servicoService.findAtual().subscribe(value => {
       this.status = value;
-      this.updateRowGroupMetaData();
+      this.onSort();
     });
   }
 
   onSort(): void {
-    this.updateRowGroupMetaData();
-  }
-
-  updateRowGroupMetaData(): void {
     this.rowGroupMetadata = {};
     if (this.status) {
       for (let i = 0; i < this.status.length; i++) {
         const rowData = this.status[i];
-        const autorizador = rowData.autorizador.dsAutorizador;
+        const idAutorizador = rowData.autorizador.idAutorizador;
         if (i === 0) {
-          this.rowGroupMetadata[autorizador] = {index: 0, size: 1};
+          this.rowGroupMetadata[idAutorizador] = {index: 0, size: 1};
         } else {
           const previousRowData = this.status[i - 1];
-          const previousRowGroup = previousRowData.autorizador.dsAutorizador;
-          if (autorizador === previousRowGroup) {
-            this.rowGroupMetadata[autorizador].size++;
+          const previousRowGroup = previousRowData.autorizador.idAutorizador;
+          if (idAutorizador === previousRowGroup) {
+            this.rowGroupMetadata[idAutorizador].size++;
           } else {
-            this.rowGroupMetadata[autorizador] = {index: i, size: 1};
+            this.rowGroupMetadata[idAutorizador] = {index: i, size: 1};
           }
         }
       }
