@@ -1,0 +1,27 @@
+<p-calendar [(ngModel)]="rangeDates" dateFormat="dd/mm/yy" selectionMode="range" [readonlyInput]="true"
+            [showIcon]="true" (ngModelChange)="changeDate($event)" #dateFilter></p-calendar>
+
+<div class="card">
+  <h5>Status atual dos serviços</h5>
+  <p-table [value]="status" sortField="autorizador.idAutorizador" sortMode="single" (onSort)="onSort()">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Serviço</th>
+        <th>Data</th>
+        <th>Disponibilidade</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+      <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.autorizador.idAutorizador].index === rowIndex">
+        <td colspan="2">
+          <span style="font-weight:bold">{{rowData.autorizador.dsAutorizador}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>{{rowData.servico.dsServico}}</td>
+        <td>{{rowData.dhHistorico | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td><i class="pi pi-circle-on" *ngIf="!!rowData.status" [ngClass]="rowData.status"></i></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

@@ -1,9 +1,10 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {CalendarModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
 import {AutorizadorService} from './services/autorizador.service';
 import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
 import {FormsModule} from '@angular/forms';
+import {ConverterService} from './services/converter.service';
 
 @NgModule({
   declarations: [AutorizadorSelectComponent],
@@ -12,7 +13,8 @@ import {FormsModule} from '@angular/forms';
     ToolbarModule,
     TabMenuModule,
     SelectButtonModule,
-    FormsModule
+    FormsModule,
+    CalendarModule
   ],
   exports: [
     CommonModule,
@@ -21,6 +23,7 @@ import {FormsModule} from '@angular/forms';
     TableModule,
     SelectButtonModule,
     FormsModule,
+    CalendarModule,
     AutorizadorSelectComponent
   ]
 })
@@ -29,7 +32,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders<SharedModule> {
     return {
       ngModule: SharedModule,
-      providers: [AutorizadorService]
+      providers: [AutorizadorService, ConverterService]
     };
   }
 

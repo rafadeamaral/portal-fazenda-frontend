@@ -6,5 +6,5 @@ export interface ServicoWrapper {
   autorizador: Autorizador;
   servico: Servico;
   status: ServicoStatus;
-  dhHistorico: string;
+  dhHistorico: Date;
 }
