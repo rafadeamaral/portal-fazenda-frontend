@@ -1,21 +1,23 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CalendarModule, CardModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {CalendarModule, CardModule, ProgressSpinnerModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
 import {AutorizadorService} from './services/autorizador.service';
 import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
 import {FormsModule} from '@angular/forms';
 import {ConverterService} from './services/converter.service';
 import { ServicoStatusPipe } from './pipes/servico-status.pipe';
+import { ProgressTableComponent } from './components/progress-table/progress-table.component';
 
 @NgModule({
-  declarations: [AutorizadorSelectComponent, ServicoStatusPipe],
+  declarations: [AutorizadorSelectComponent, ServicoStatusPipe, ProgressTableComponent],
   imports: [
     CommonModule,
     ToolbarModule,
     TabMenuModule,
     SelectButtonModule,
     FormsModule,
-    CalendarModule
+    CalendarModule,
+    ProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { ServicoStatusPipe } from './pipes/servico-status.pipe';
     CalendarModule,
     CardModule,
     AutorizadorSelectComponent,
-    ServicoStatusPipe
+    ServicoStatusPipe,
+    ProgressTableComponent
   ]
 })
 export class SharedModule {
