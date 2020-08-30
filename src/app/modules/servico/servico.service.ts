@@ -15,4 +15,8 @@ export class ServicoService {
     return this.http.get<ServicoWrapper[]>(this.URL_API);
   }
 
+  findByAutorizador(id: number): Observable<ServicoWrapper[]> {
+    return this.http.get<ServicoWrapper[]>(`${this.URL_API}/autorizador/${id}`);
+  }
+
 }

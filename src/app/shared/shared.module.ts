@@ -1,19 +1,36 @@
-import { NgModule } from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {AutorizadorService} from './services/autorizador.service';
+import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [AutorizadorSelectComponent],
   imports: [
     CommonModule,
     ToolbarModule,
-    TabMenuModule
+    TabMenuModule,
+    SelectButtonModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
     ToolbarModule,
     TabMenuModule,
-    TableModule
+    TableModule,
+    SelectButtonModule,
+    FormsModule,
+    AutorizadorSelectComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [AutorizadorService]
+    };
+  }
+
+}

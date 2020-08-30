@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
