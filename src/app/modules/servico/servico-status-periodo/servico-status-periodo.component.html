@@ -3,7 +3,7 @@
 
 <div class="card">
   <h5>Status atual dos serviços</h5>
-  <p-table [value]="status" sortField="autorizador.idAutorizador" sortMode="single" (onSort)="onSort()">
+  <p-table [value]="status" sortField="autorizador.idAutorizador" [scrollable]="true" scrollHeight="500px" sortMode="single" (onSort)="onSort()">
     <ng-template pTemplate="header">
       <tr>
         <th>Serviço</th>

@@ -6,13 +6,15 @@ import {ServicoService} from './servico.service';
 import { ServicoStatusAutorizadorComponent } from './servico-status-autorizador/servico-status-autorizador.component';
 import { ServicoStatusPeriodoComponent } from './servico-status-periodo/servico-status-periodo.component';
 import { ServicoStatusIndisponibilidadeComponent } from './servico-status-indisponibilidade/servico-status-indisponibilidade.component';
+import { ServicoStatusComponent } from './servico-status/servico-status.component';
 
 @NgModule({
   declarations: [
     ServicoStatusAtualComponent,
     ServicoStatusAutorizadorComponent,
     ServicoStatusPeriodoComponent,
-    ServicoStatusIndisponibilidadeComponent
+    ServicoStatusIndisponibilidadeComponent,
+    ServicoStatusComponent
   ],
   imports: [
     SharedModule,

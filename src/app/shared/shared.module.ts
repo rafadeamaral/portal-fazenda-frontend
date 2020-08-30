@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CalendarModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {CalendarModule, CardModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
 import {AutorizadorService} from './services/autorizador.service';
 import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
 import {FormsModule} from '@angular/forms';
@@ -25,6 +25,7 @@ import { ServicoStatusPipe } from './pipes/servico-status.pipe';
     SelectButtonModule,
     FormsModule,
     CalendarModule,
+    CardModule,
     AutorizadorSelectComponent,
     ServicoStatusPipe
   ]

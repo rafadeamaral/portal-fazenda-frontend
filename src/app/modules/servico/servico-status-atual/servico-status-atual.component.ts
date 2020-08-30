@@ -3,6 +3,7 @@ import {ServicoService} from '../servico.service';
 import {ServicoWrapper} from '../../../shared/domain/servico-wrapper';
 
 @Component({
+  selector: 'app-servico-status-atual',
   templateUrl: './servico-status-atual.component.html',
   styleUrls: ['./servico-status-atual.component.sass']
 })

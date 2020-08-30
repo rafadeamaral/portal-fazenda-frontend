@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ServicoStatusAtualComponent} from './servico-status-atual/servico-status-atual.component';
+import {ServicoStatusComponent} from './servico-status/servico-status.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ServicoStatusAtualComponent
+    component: ServicoStatusComponent
   }
 ];
 
