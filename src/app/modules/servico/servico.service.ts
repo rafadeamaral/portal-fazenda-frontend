@@ -22,6 +22,7 @@ export class ServicoService {
   }
 
   findByPeriodo(dhInicio: Date, dhFim: Date): Observable<ServicoWrapper[]> {
+    dhFim.setHours(23, 59, 59);
     const params = new HttpParams()
       .append('dhInicio', this.converterService.formatDate(dhInicio))
       .append('dhFim', this.converterService.formatDate(dhFim));

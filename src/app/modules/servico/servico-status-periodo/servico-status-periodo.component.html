@@ -1,4 +1,4 @@
-<p-calendar [(ngModel)]="rangeDates" dateFormat="dd/mm/yy" selectionMode="range" [readonlyInput]="true"
+<p-calendar [(ngModel)]="rangeDates" [locale]="pt" dateFormat="dd/mm/yy" selectionMode="range" [readonlyInput]="true"
             [showIcon]="true" (ngModelChange)="changeDate($event)" #dateFilter></p-calendar>
 
 <div class="card">
@@ -13,12 +13,17 @@
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
       <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.autorizador.idAutorizador].index === rowIndex">
-        <td colspan="2">
+        <td colspan="3">
           <span style="font-weight:bold">{{rowData.autorizador.dsAutorizador}}</span>
         </td>
       </tr>
+      <tr class="ui-widget-header" *ngIf="rowGroupMetadata2[rowData.autorizador.idAutorizador + '-' + rowData.servico.idServico].index === rowIndex">
+        <td colspan="3">
+          <span style="font-weight:bold">{{rowData.servico.dsServico}}</span>
+        </td>
+      </tr>
       <tr>
-        <td>{{rowData.servico.dsServico}}</td>
+        <td></td>
         <td>{{rowData.dhHistorico | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
         <td><i class="pi pi-circle-on" *ngIf="!!rowData.status" [ngClass]="rowData.status"></i></td>
       </tr>
