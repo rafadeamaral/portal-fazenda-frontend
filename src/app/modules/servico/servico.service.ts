@@ -4,6 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ServicoWrapper} from '../../shared/domain/servico-wrapper';
 import {ConverterService} from '../../shared/services/converter.service';
+import {Autorizador} from '../../shared/domain/autorizador.domain';
 
 @Injectable()
 export class ServicoService {
@@ -27,6 +28,10 @@ export class ServicoService {
       .append('dhInicio', this.converterService.formatDate(dhInicio))
       .append('dhFim', this.converterService.formatDate(dhFim));
     return this.http.get<ServicoWrapper[]>(`${this.URL_API}/periodo`, {params});
+  }
+
+  findByIndisponibilidade(): Observable<Autorizador[]> {
+    return this.http.get<Autorizador[]>(`${this.URL_API}/indisponibilidade`);
   }
 
 }

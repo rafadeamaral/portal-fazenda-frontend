@@ -5,9 +5,15 @@ import {SharedModule} from '../../shared/shared.module';
 import {ServicoService} from './servico.service';
 import { ServicoStatusAutorizadorComponent } from './servico-status-autorizador/servico-status-autorizador.component';
 import { ServicoStatusPeriodoComponent } from './servico-status-periodo/servico-status-periodo.component';
+import { ServicoStatusIndisponibilidadeComponent } from './servico-status-indisponibilidade/servico-status-indisponibilidade.component';
 
 @NgModule({
-  declarations: [ServicoStatusAtualComponent, ServicoStatusAutorizadorComponent, ServicoStatusPeriodoComponent],
+  declarations: [
+    ServicoStatusAtualComponent,
+    ServicoStatusAutorizadorComponent,
+    ServicoStatusPeriodoComponent,
+    ServicoStatusIndisponibilidadeComponent
+  ],
   imports: [
     SharedModule,
     ServicoRoutingModule
