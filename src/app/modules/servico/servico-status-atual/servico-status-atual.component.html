@@ -1,5 +1,4 @@
-<div class="card">
-  <h5>Status atual dos serviços</h5>
+<p-card header="Serviços Status Atual">
   <p-table [value]="status" sortField="autorizador.idAutorizador" [scrollable]="true"
            scrollHeight="500px" sortMode="single" (onSort)="onSort()">
     <ng-template pTemplate="header">
@@ -20,4 +19,4 @@
       </tr>
     </ng-template>
   </p-table>
-</div>
+</p-card>
