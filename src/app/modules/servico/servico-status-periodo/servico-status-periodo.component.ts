@@ -36,7 +36,7 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.progressTable.showMessage();
+    setTimeout(() => this.progressTable.showMessage(true));
   }
 
   changeDate(event: Date[]): void {
@@ -48,7 +48,7 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
         this.dateFilter.hideOverlay();
         this.progressTable.hideMessage();
         this.servicoService.findByPeriodo(dhInicio, dhFim)
-          .pipe(finalize(() => this.progressTable.hideProgress(this.status.length === 0)))
+          .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
           .subscribe(value => {
           this.status = value;
         });

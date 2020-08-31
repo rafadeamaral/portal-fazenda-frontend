@@ -15,18 +15,14 @@ export class ProgressTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  showMessage(): void {
-    setTimeout(() => this.message = true, 10);
+  showMessage(message: boolean): void {
+    this.progress = false;
+    this.message = message;
   }
 
   hideMessage(): void {
     this.message = false;
     this.progress = true;
-  }
-
-  hideProgress(message: boolean): void {
-    this.progress = false;
-    this.message = message;
   }
 
 }

@@ -22,7 +22,7 @@ export class ServicoStatusAtualComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.findAtual();
+    setTimeout(() => this.findAtual());
   }
 
   findAtual(): void {
@@ -30,7 +30,7 @@ export class ServicoStatusAtualComponent implements OnInit, AfterViewInit {
     this.progressTable.hideMessage();
     this.servicoService.findAtual()
       .pipe(finalize(() => {
-        this.progressTable.hideProgress(this.status.length === 0);
+        this.progressTable.showMessage(this.status.length === 0);
         setTimeout(() => this.findAtual(), 300000);
       }))
       .subscribe(value => {

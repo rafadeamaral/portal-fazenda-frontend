@@ -24,7 +24,7 @@ export class ServicoStatusAutorizadorComponent implements OnInit {
     this.status = [];
     this.progressTable.hideMessage();
     this.servicoService.findByAutorizador(id)
-      .pipe(finalize(() => this.progressTable.hideProgress(this.status.length === 0)))
+      .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
       .subscribe(value => this.status = value);
   }
 
