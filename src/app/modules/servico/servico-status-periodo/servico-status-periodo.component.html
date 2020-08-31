@@ -4,7 +4,7 @@
                 [showIcon]="true" (ngModelChange)="changeDate($event)" #dateFilter></p-calendar>
   </div>
 
-  <p-table [value]="status" [scrollable]="true" scrollHeight="500px">
+  <p-table [value]="status">
     <ng-template pTemplate="header">
       <tr>
         <th>Estado</th>

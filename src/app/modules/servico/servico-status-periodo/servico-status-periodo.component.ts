@@ -16,7 +16,7 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
   status: ServicoWrapper[] = [];
   pt: any;
 
-  rows = 20;
+  rows = 12;
   totalRecords = 0;
 
   @ViewChild('dateFilter') private dateFilter: Calendar;
