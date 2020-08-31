@@ -16,6 +16,9 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
   status: ServicoWrapper[] = [];
   pt: any;
 
+  rows = 0;
+  totalRecords = 0;
+
   @ViewChild('dateFilter') private dateFilter: Calendar;
   @ViewChild('progressTable') private progressTable: ProgressTableComponent;
 
@@ -41,18 +44,38 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
 
   changeDate(event: Date[]): void {
     if (event.length === 2) {
+      this.status = [];
+      this.rows = 0;
       const dhInicio = event[0];
       const dhFim = event[1];
       if (dhInicio && dhFim) {
-        this.status = [];
         this.dateFilter.hideOverlay();
         this.progressTable.hideMessage();
-        this.servicoService.findByPeriodo(dhInicio, dhFim)
-          .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
-          .subscribe(value => {
-          this.status = value;
-        });
+        this.findByPeriodo(0);
       }
+    }
+  }
+
+  paginate(event): void {
+    console.log(event);
+    this.findByPeriodo(event.page);
+  }
+
+  findByPeriodo(page: number): void {
+    if (this.rangeDates.length !== 2) {
+      return;
+    }
+
+    const dhInicio = this.rangeDates[0];
+    const dhFim = this.rangeDates[1];
+    if (dhInicio && dhFim) {
+      this.servicoService.findByPeriodo(dhInicio, dhFim, page, 20)
+        .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
+        .subscribe(value => {
+          this.status = value.content;
+          this.rows = value.totalPages;
+          this.totalRecords = value.totalElements;
+        });
     }
   }
 

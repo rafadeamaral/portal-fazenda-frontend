@@ -23,5 +23,7 @@
     </ng-template>
   </p-table>
 
+  <p-paginator [rows]="rows" [totalRecords]="totalRecords" (onPageChange)="paginate($event)" *ngIf="rows"></p-paginator>
+
   <app-progress-table #progressTable></app-progress-table>
 </p-card>

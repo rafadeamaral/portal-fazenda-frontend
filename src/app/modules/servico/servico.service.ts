@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {ServicoWrapper} from '../../shared/domain/servico-wrapper';
 import {ConverterService} from '../../shared/services/converter.service';
 import {Autorizador} from '../../shared/domain/autorizador.domain';
+import {Page} from '../../shared/domain/page';
 
 @Injectable()
 export class ServicoService {
@@ -22,12 +23,14 @@ export class ServicoService {
     return this.http.get<ServicoWrapper[]>(`${this.URL_API}/autorizador/${id}`);
   }
 
-  findByPeriodo(dhInicio: Date, dhFim: Date): Observable<ServicoWrapper[]> {
+  findByPeriodo(dhInicio: Date, dhFim: Date, page: number, size: number): Observable<Page<ServicoWrapper>> {
     dhFim.setHours(23, 59, 59);
     const params = new HttpParams()
       .append('dhInicio', this.converterService.formatDate(dhInicio))
-      .append('dhFim', this.converterService.formatDate(dhFim));
-    return this.http.get<ServicoWrapper[]>(`${this.URL_API}/periodo`, {params});
+      .append('dhFim', this.converterService.formatDate(dhFim))
+      .append('page', page.toString(10))
+      .append('size', size.toString(10));
+    return this.http.get<Page<ServicoWrapper>>(`${this.URL_API}/periodo`, {params});
   }
 
   findByIndisponibilidade(): Observable<Autorizador[]> {

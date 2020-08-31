@@ -1,6 +1,15 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {CalendarModule, CardModule, ProgressSpinnerModule, SelectButtonModule, TableModule, TabMenuModule, ToolbarModule} from 'primeng';
+import {
+  CalendarModule,
+  CardModule,
+  PaginatorModule,
+  ProgressSpinnerModule,
+  SelectButtonModule,
+  TableModule,
+  TabMenuModule,
+  ToolbarModule
+} from 'primeng';
 import {AutorizadorService} from './services/autorizador.service';
 import { AutorizadorSelectComponent } from './components/autorizador-select/autorizador-select.component';
 import {FormsModule} from '@angular/forms';
@@ -28,6 +37,7 @@ import { ProgressTableComponent } from './components/progress-table/progress-tab
     FormsModule,
     CalendarModule,
     CardModule,
+    PaginatorModule,
     AutorizadorSelectComponent,
     ServicoStatusPipe,
     ProgressTableComponent
