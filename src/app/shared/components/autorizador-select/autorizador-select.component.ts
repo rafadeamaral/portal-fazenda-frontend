@@ -18,14 +18,23 @@ export class AutorizadorSelectComponent implements OnInit {
   constructor(private autorizadorService: AutorizadorService) { }
 
   ngOnInit(): void {
+    this.findAll();
+  }
+
+  findAll(): void {
     this.autorizadorService.findAll()
-      .pipe(finalize(() => this.onChange(this.value)))
+      .pipe(finalize(() => {
+        this.onChange(this.value);
+        if (!this.value) {
+          setTimeout(() => this.findAll(), 60000);
+        }
+      }))
       .subscribe(autorizadores => {
         this.options = autorizadores.map(autorizador => ({label: autorizador.dsAutorizador, value: autorizador.idAutorizador}));
         if (this.options.length > 0) {
           this.value = this.options[0].value;
         }
-    });
+      });
   }
 
   onChange(id: number): void {
