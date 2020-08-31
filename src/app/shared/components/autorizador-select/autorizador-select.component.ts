@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {SelectItem} from 'primeng';
 import {AutorizadorService} from '../../services/autorizador.service';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-autorizador-select',
@@ -17,12 +18,13 @@ export class AutorizadorSelectComponent implements OnInit {
   constructor(private autorizadorService: AutorizadorService) { }
 
   ngOnInit(): void {
-    this.autorizadorService.findAll().subscribe(autorizadores => {
-      this.options = autorizadores.map(autorizador => ({label: autorizador.dsAutorizador, value: autorizador.idAutorizador}));
-      if (this.options.length > 0) {
-        this.value = this.options[0].value;
-        this.onChange(this.value);
-      }
+    this.autorizadorService.findAll()
+      .pipe(finalize(() => this.onChange(this.value)))
+      .subscribe(autorizadores => {
+        this.options = autorizadores.map(autorizador => ({label: autorizador.dsAutorizador, value: autorizador.idAutorizador}));
+        if (this.options.length > 0) {
+          this.value = this.options[0].value;
+        }
     });
   }
 

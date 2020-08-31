@@ -21,11 +21,16 @@ export class ServicoStatusAutorizadorComponent implements OnInit {
   }
 
   changeAutorizador(id: number): void {
-    this.status = [];
-    this.progressTable.hideMessage();
-    this.servicoService.findByAutorizador(id)
-      .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
-      .subscribe(value => this.status = value);
+    if (!!id) {
+      this.status = [];
+      this.progressTable.hideMessage();
+      this.servicoService.findByAutorizador(id)
+        .pipe(finalize(() => this.progressTable.showMessage(this.status.length === 0)))
+        .subscribe(value => this.status = value);
+    } else {
+      this.status = [];
+      this.progressTable.showMessage(true);
+    }
   }
 
 }
