@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ServicoService} from '../servico.service';
 import {Autorizador} from '../../../shared/domain/autorizador.domain';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-servico-status-indisponibilidade',
@@ -14,9 +15,13 @@ export class ServicoStatusIndisponibilidadeComponent implements OnInit {
   constructor(private servicoService: ServicoService) { }
 
   ngOnInit(): void {
-    this.servicoService.findByIndisponibilidade().subscribe(value => {
-      this.autorizadores = value;
-    });
+    this.findByIndisponibilidade();
+  }
+
+  findByIndisponibilidade(): void {
+    this.servicoService.findByIndisponibilidade()
+      .pipe(finalize(() => setTimeout(() => this.findByIndisponibilidade(), 300000)))
+      .subscribe(value => this.autorizadores = value);
   }
 
 }
