@@ -30,5 +30,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * Criado dashboard com os status dos serviços.
 * Utilizado componentes do `https://www.primefaces.org/primeng/`.
-* Customizado css dos componentes p-table e p-selectButton.
+* Customizado css dos componentes p-table, p-card e p-selectButton.
 * Criado pipe servicoStatus.
