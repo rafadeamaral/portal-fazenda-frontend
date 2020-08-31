@@ -1,24 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ServicoService} from '../servico.service';
 import {ServicoWrapper} from '../../../shared/domain/servico-wrapper';
+import {ProgressTableComponent} from '../../../shared/components/progress-table/progress-table.component';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-servico-status-atual',
   templateUrl: './servico-status-atual.component.html',
   styleUrls: ['./servico-status-atual.component.sass']
 })
-export class ServicoStatusAtualComponent implements OnInit {
+export class ServicoStatusAtualComponent implements OnInit, AfterViewInit {
 
   status: ServicoWrapper[] = [];
   rowGroupMetadata: any;
 
+  @ViewChild('progressTable') private progressTable: ProgressTableComponent;
+
   constructor(private servicoService: ServicoService) { }
 
   ngOnInit(): void {
-    this.servicoService.findAtual().subscribe(value => {
-      this.status = value;
-      this.onSort();
-    });
+  }
+
+  ngAfterViewInit(): void {
+    this.findAtual();
+  }
+
+  findAtual(): void {
+    this.status = [];
+    this.progressTable.hideMessage();
+    this.servicoService.findAtual()
+      .pipe(finalize(() => {
+        this.progressTable.hideProgress(this.status.length === 0);
+        setTimeout(() => this.findAtual(), 300000);
+      }))
+      .subscribe(value => {
+        this.status = value;
+        this.onSort();
+      });
   }
 
   onSort(): void {
