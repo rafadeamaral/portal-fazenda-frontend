@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {ServicoWrapper} from '../../../shared/domain/servico-wrapper';
 import {ServicoService} from '../servico.service';
 import {Calendar} from 'primeng';
@@ -22,7 +22,8 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
   @ViewChild('dateFilter') private dateFilter: Calendar;
   @ViewChild('progressTable') private progressTable: ProgressTableComponent;
 
-  constructor(private servicoService: ServicoService) { }
+  constructor(private servicoService: ServicoService,
+              private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.pt = {
@@ -39,7 +40,8 @@ export class ServicoStatusPeriodoComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.progressTable.showMessage(true));
+    this.progressTable.showMessage(true);
+    this.cd.detectChanges();
   }
 
   changeDate(event: Date[]): void {

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {ServicoService} from '../servico.service';
 import {ServicoWrapper} from '../../../shared/domain/servico-wrapper';
 import {ProgressTableComponent} from '../../../shared/components/progress-table/progress-table.component';
@@ -16,13 +16,15 @@ export class ServicoStatusAtualComponent implements OnInit, AfterViewInit {
 
   @ViewChild('progressTable') private progressTable: ProgressTableComponent;
 
-  constructor(private servicoService: ServicoService) { }
+  constructor(private servicoService: ServicoService,
+              private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.findAtual());
+    this.findAtual();
+    this.cd.detectChanges();
   }
 
   findAtual(): void {
